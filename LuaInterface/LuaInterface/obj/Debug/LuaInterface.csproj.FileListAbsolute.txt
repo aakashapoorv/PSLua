@@ -1,0 +1,7 @@
+C:\Users\Public\Documents\PSM\source\LuaInterface\LuaInterface\bin\Debug\LuaInterface.dll
+C:\Users\Public\Documents\PSM\source\LuaInterface\LuaInterface\bin\Debug\LuaInterface.pdb
+C:\Users\Public\Documents\PSM\source\LuaInterface\LuaInterface\bin\Debug\KopiLua.dll
+C:\Users\Public\Documents\PSM\source\LuaInterface\LuaInterface\bin\Debug\KopiLua.pdb
+C:\Users\Public\Documents\PSM\source\LuaInterface\LuaInterface\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Public\Documents\PSM\source\LuaInterface\LuaInterface\obj\Debug\LuaInterface.dll
+C:\Users\Public\Documents\PSM\source\LuaInterface\LuaInterface\obj\Debug\LuaInterface.pdb
