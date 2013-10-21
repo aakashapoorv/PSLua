@@ -63,10 +63,14 @@ public class LuaSample
 		titleString = Convert.ToString(lua["TitleString"]);
 		TitleStringX = Convert.ToInt32(lua["TitleStringX"]);
 			
+<<<<<<< HEAD
 			buttonName= "nil";
 
 		
 		
+=======
+		buttonName= "nil";
+>>>>>>> 27ba49d2a274c352ed94cfdb8a630b52f57fad44
         
     }
 
@@ -83,6 +87,7 @@ public class LuaSample
     public static void Update()
 			
     {
+<<<<<<< HEAD
 			PSLua.mainController mc = new PSLua.mainController();
 			string mys = mc.GameKey();
 			bool myb = mc.GameKeyBool();
@@ -96,8 +101,34 @@ public class LuaSample
 			bool isBtnDown = myb;
 			var btnLua = mys;
 			lua.GetFunction("OnPress").Call(btnLua, isBtnDown);
+=======
+		gamePadData = GamePad.GetData(0);
+		if((gamePadData.Buttons & GamePadButtons.Left) != 0)
+		{
+			Console.WriteLine(gamePadData.Buttons);
 			
-        SampleDraw.Update();
+            	}
+			
+		if((gamePadData.Buttons) != 0)
+		{
+			Console.WriteLine(gamePadData.Buttons);
+		
+            	}
+			
+		bool isBtnDown = true;
+		if ((gamePadData.Buttons) != 0)
+		{
+			isBtnDown = true;
+		}
+		else
+		{
+			isBtnDown = false;
+		}
+		var btnLua = Convert.ToString(gamePadData.Buttons);
+		lua.GetFunction("OnPress").Call(btnLua, isBtnDown);
+>>>>>>> 27ba49d2a274c352ed94cfdb8a630b52f57fad44
+			
+        	SampleDraw.Update();
 
 			
 			

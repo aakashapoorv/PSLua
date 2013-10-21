@@ -21,14 +21,22 @@ function OnTouch(pointX, pointY, isDown)
     -- Call C# function
     MoveText(TitleStringX)
     FillCircle(ColorList[ColorIndex], pointX, pointY, 120)
+<<<<<<< HEAD
    -- print("0000000Ti")
+=======
+    print("Touch Event")
+>>>>>>> 27ba49d2a274c352ed94cfdb8a630b52f57fad44
 end
 
 function OnPress (btnLua, isBtnDown)
 --print(string.format("%s %s", btnLua, tostring(isBtnDown)))
 btnText(tostring(btnLua))
+<<<<<<< HEAD
 if isBtnDown == true then
 mytbl = fromCSV (btnLua)
+=======
+print("Button Event")
+>>>>>>> 27ba49d2a274c352ed94cfdb8a630b52f57fad44
 
 for i,line in ipairs(mytbl) do
 	 line = line:gsub("%s+", "")
