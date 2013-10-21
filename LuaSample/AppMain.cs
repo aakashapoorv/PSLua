@@ -61,7 +61,7 @@ public static class LuaSample
 		titleString = Convert.ToString(lua["TitleString"]);
 		TitleStringX = Convert.ToInt32(lua["TitleStringX"]);
 			
-			buttonName= "nil";
+		buttonName= "nil";
         
     }
 
@@ -77,38 +77,32 @@ public static class LuaSample
     public static void Update()
 			
     {
-			gamePadData = GamePad.GetData(0);
-			if((gamePadData.Buttons & GamePadButtons.Left) != 0)
-			{
-				titleString = "btnCircle()";
-                Console.WriteLine("54sedhf");
-				Console.WriteLine(gamePadData.Buttons);
-				
-				MoveText(60);
-            }
+		gamePadData = GamePad.GetData(0);
+		if((gamePadData.Buttons & GamePadButtons.Left) != 0)
+		{
+			Console.WriteLine(gamePadData.Buttons);
 			
-			if((gamePadData.Buttons) != 0)
-			{
-				titleString = "btnCircle()";
-                Console.WriteLine("54sedhf");
-				Console.WriteLine(gamePadData.Buttons);
-				
-				MoveText(60);
-            }
+            	}
 			
-			bool isBtnDown = true;
-					if ((gamePadData.Buttons) != 0)
-					{
-						isBtnDown = true;
-					}
-					else
-					{
-						isBtnDown = false;
-					}
-				var btnLua = Convert.ToString(gamePadData.Buttons);
-				lua.GetFunction("OnPress").Call(btnLua, isBtnDown);
+		if((gamePadData.Buttons) != 0)
+		{
+			Console.WriteLine(gamePadData.Buttons);
+		
+            	}
 			
-        SampleDraw.Update();
+		bool isBtnDown = true;
+		if ((gamePadData.Buttons) != 0)
+		{
+			isBtnDown = true;
+		}
+		else
+		{
+			isBtnDown = false;
+		}
+		var btnLua = Convert.ToString(gamePadData.Buttons);
+		lua.GetFunction("OnPress").Call(btnLua, isBtnDown);
+			
+        	SampleDraw.Update();
 
 			
 			
