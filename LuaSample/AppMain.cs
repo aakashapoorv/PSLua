@@ -1,5 +1,5 @@
-/* PSLua
- * by Aakash Apoorv.
+/* 
+ * Aakash Apoorv
  */
 using System;
 using System.Threading;
@@ -18,19 +18,21 @@ namespace Sample
 /**
  * LuaSample
  */
-public static class LuaSample
+public class LuaSample
 {
     static GraphicsContext graphics;
     static bool loop = true;
 
     static Lua lua;
-		static GamePadData gamePadData;
+	static GamePadData gamePadData;
 		
 		
-		static string titleString;
-		static int TitleStringX;
+	static string titleString;
+	static int TitleStringX;
 		
-		static string buttonName;
+	static string buttonName;
+		
+
 
     public static void Main(string[] args)
     {
@@ -62,6 +64,9 @@ public static class LuaSample
 		TitleStringX = Convert.ToInt32(lua["TitleStringX"]);
 			
 			buttonName= "nil";
+
+		
+		
         
     }
 
@@ -73,40 +78,24 @@ public static class LuaSample
         SampleDraw.Term();
         graphics.Dispose();
     }
+		PSLua.mainController mc = new PSLua.mainController();
 
     public static void Update()
 			
     {
-			gamePadData = GamePad.GetData(0);
-			if((gamePadData.Buttons & GamePadButtons.Left) != 0)
+			PSLua.mainController mc = new PSLua.mainController();
+			string mys = mc.GameKey();
+			bool myb = mc.GameKeyBool();
+			
+			
+			if(myb)
 			{
-				titleString = "btnCircle()";
-                Console.WriteLine("54sedhf");
-				Console.WriteLine(gamePadData.Buttons);
-				
-				MoveText(60);
+				//Console.WriteLine(mys);
             }
 			
-			if((gamePadData.Buttons) != 0)
-			{
-				titleString = "btnCircle()";
-                Console.WriteLine("54sedhf");
-				Console.WriteLine(gamePadData.Buttons);
-				
-				MoveText(60);
-            }
-			
-			bool isBtnDown = true;
-					if ((gamePadData.Buttons) != 0)
-					{
-						isBtnDown = true;
-					}
-					else
-					{
-						isBtnDown = false;
-					}
-				var btnLua = Convert.ToString(gamePadData.Buttons);
-				lua.GetFunction("OnPress").Call(btnLua, isBtnDown);
+			bool isBtnDown = myb;
+			var btnLua = mys;
+			lua.GetFunction("OnPress").Call(btnLua, isBtnDown);
 			
         SampleDraw.Update();
 

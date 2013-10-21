@@ -9,7 +9,7 @@ ColorIndex = 1
 -- Functions
 
 function OnTouch(pointX, pointY, isDown)
-    print(string.format("%d %d %s", pointX, pointY, tostring(isDown)))
+   -- print(string.format("%d %d %s", pointX, pointY, tostring(isDown)))
 	TitleStringX = TitleStringX + 10
     if isDown then
         ColorIndex = ColorIndex + 1
@@ -21,14 +21,50 @@ function OnTouch(pointX, pointY, isDown)
     -- Call C# function
     MoveText(TitleStringX)
     FillCircle(ColorList[ColorIndex], pointX, pointY, 120)
-    print("0000000Ti")
+   -- print("0000000Ti")
 end
 
 function OnPress (btnLua, isBtnDown)
-print(string.format("%s %s", btnLua, tostring(isBtnDown)))
+--print(string.format("%s %s", btnLua, tostring(isBtnDown)))
 btnText(tostring(btnLua))
-print("Button Pressed")
+if isBtnDown == true then
+mytbl = fromCSV (btnLua)
 
+for i,line in ipairs(mytbl) do
+	 line = line:gsub("%s+", "")
+      print(line)
+     
+    end
+end
+end
+
+
+
+
+function fromCSV (s)
+  s = s .. ','        -- ending comma
+  local t = {}        -- table to collect fields
+  local fieldstart = 1
+  repeat
+    -- next field is quoted? (start with `"'?)
+    if string.find(s, '^"', fieldstart) then
+      local a, c
+      local i  = fieldstart
+      repeat
+        -- find closing quote
+        a, i, c = string.find(s, '"("?)', i+1)
+      until c ~= '"'    -- quote not followed by quote?
+      if not i then error('unmatched "') end
+      local f = string.sub(s, fieldstart+1, i-1)
+      table.insert(t, (string.gsub(f, '""', '"')))
+      fieldstart = string.find(s, ',', i) + 1
+    else                -- unquoted; find next comma
+      local nexti = string.find(s, ',', fieldstart)
+      table.insert(t, string.sub(s, fieldstart, nexti-1))
+      fieldstart = nexti + 1
+    end
+  until fieldstart > string.len(s)
+  return t
 end
 
 
