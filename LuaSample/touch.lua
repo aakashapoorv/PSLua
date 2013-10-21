@@ -21,13 +21,13 @@ function OnTouch(pointX, pointY, isDown)
     -- Call C# function
     MoveText(TitleStringX)
     FillCircle(ColorList[ColorIndex], pointX, pointY, 120)
-    print("0000000Ti")
+    print("Touch Event")
 end
 
 function OnPress (btnLua, isBtnDown)
 print(string.format("%s %s", btnLua, tostring(isBtnDown)))
 btnText(tostring(btnLua))
-print("Button Pressed")
+print("Button Event")
 
 end
 
